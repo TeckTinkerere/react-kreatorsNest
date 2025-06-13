@@ -1,6 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState, useCallback } from 'react';
 
 const Caricature = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const caricatureResources = [
     {
       title: 'Digital Caricature Drawing',
@@ -57,6 +60,45 @@ const Caricature = () => {
     }
   };
 
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset, velocity) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = useCallback((newDirection) => {
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = prevIndex + newDirection;
+      if (nextIndex < 0) return caricatureResources.length - 1;
+      if (nextIndex >= caricatureResources.length) return 0;
+      return nextIndex;
+    });
+  }, [caricatureResources.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [paginate]);
+
   return (
     <motion.div
       variants={containerVariants}
@@ -73,44 +115,95 @@ const Caricature = () => {
         </p>
       </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-      >
-        {caricatureResources.map((resource, index) => (
+      {/* Auto Carousel Section */}
+      <div className="relative h-[600px] overflow-hidden mb-12">
+        <AnimatePresence initial={false} custom={currentIndex}>
           <motion.div
-            key={index}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            key={currentIndex}
+            custom={currentIndex}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = swipePower(offset.x, velocity.x);
+              if (swipe < -swipeConfidenceThreshold) {
+                paginate(1);
+              } else if (swipe > swipeConfidenceThreshold) {
+                paginate(-1);
+              }
+            }}
+            className="absolute w-full"
           >
-            <div className="relative h-48 overflow-hidden">
-              <motion.img
-                src={resource.image}
-                alt={resource.title}
-                className="w-full h-full object-cover"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-3">{resource.title}</h2>
-              <p className="text-gray-600 mb-4 whitespace-pre-line text-sm">{resource.description.trim()}</p>
-              <div className="flex items-center justify-between">
-                <p className="text-blue-600 font-semibold">{resource.price}</p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Explore Kits
-                </motion.button>
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+              <div className="relative h-48 overflow-hidden">
+                <motion.img
+                  src={caricatureResources[currentIndex].image}
+                  alt={caricatureResources[currentIndex].title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              </div>
+              <div className="p-6">
+                <h2 className="text-xl font-semibold mb-3">{caricatureResources[currentIndex].title}</h2>
+                <p className="text-gray-600 mb-4 whitespace-pre-line text-sm">{caricatureResources[currentIndex].description.trim()}</p>
+                <div className="flex items-center justify-between">
+                  <p className="text-blue-600 font-semibold">{caricatureResources[currentIndex].price}</p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Explore Kits
+                  </motion.button>
+                </div>
               </div>
             </div>
           </motion.div>
-        ))}
-      </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation Dots */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {caricatureResources.map((_, index) => (
+            <motion.button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2 h-2 rounded-full ${
+                index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <motion.button
+          onClick={() => paginate(-1)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 text-blue-600 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ‹
+        </motion.button>
+        <motion.button
+          onClick={() => paginate(1)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 text-blue-600 p-2 rounded-full shadow-lg hover:bg-white transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ›
+        </motion.button>
+      </div>
 
       <motion.div
         variants={itemVariants}

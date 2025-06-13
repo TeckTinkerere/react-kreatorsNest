@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import whitelogo from '../assets/whitelogo.png';
 
 const navItems = [
   { path: '/', icon: <Home size={20} />, label: 'Home' },  
@@ -77,14 +78,21 @@ const Sidebar = () => {
             className="fixed inset-y-0 left-0 w-64 bg-gray-900 text-white p-6 z-40 shadow-lg md:hidden"
           >
             {/* Branding */}
-            <motion.h1
-              className="text-2xl font-extrabold tracking-wide mb-10"
+            <motion.div
+              className="flex items-center gap-3 mb-10"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              KreatorNest
-            </motion.h1>
+              <img 
+                src={whitelogo} 
+                alt="KreatorNest Logo" 
+                className="w-8 h-8 object-contain" 
+              />
+              <h1 className="text-2xl font-extrabold tracking-wide">
+                KreatorNest
+              </h1>
+            </motion.div>
 
             {/* Navigation */}
             <nav>
@@ -121,7 +129,14 @@ const Sidebar = () => {
 
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex flex-col fixed top-0 left-0 w-64 h-screen bg-gray-900 text-white p-6 z-30">
-        <h1 className="text-2xl font-extrabold tracking-wide mb-10">KreatorNest</h1>
+        <div className="flex items-center gap-3 mb-10">
+          <img 
+            src={whitelogo} 
+            alt="KreatorNest Logo" 
+            className="w-8 h-8 object-contain" 
+          />
+          <h1 className="text-2xl font-extrabold tracking-wide">KreatorNest</h1>
+        </div>
         <nav className="flex-1">
           <ul className="space-y-3">
             {navItems.map((item) => {

@@ -1,43 +1,44 @@
 import { motion } from 'framer-motion';
+import kelvinImage from '../assets/kelvin.jpg';
 
 const FeaturedFreelancers = () => {
   const freelancers = [
     {
-      name: 'Sarah Johnson',
+      name: 'Ji Loong (Kelvin)',
       role: 'Photographer',
-      experience: '8 years',
+      experience: '3 years',
       rating: '4.9',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500',
+      image: kelvinImage,
       portfolio: '15+ Projects',
-      skills: ['Portrait', 'Wedding', 'Commercial']
+      skills: ['Portrait', 'Wedding', 'Commercial', 'Events']
     },
-    {
-      name: 'Michael Chen',
-      role: 'Videographer',
-      experience: '6 years',
-      rating: '4.8',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500',
-      portfolio: '20+ Projects',
-      skills: ['Documentary', 'Commercial', 'Music Videos']
-    },
-    {
-      name: 'Emma Davis',
-      role: 'Graphic Designer',
-      experience: '5 years',
-      rating: '4.9',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500',
-      portfolio: '25+ Projects',
-      skills: ['Branding', 'UI/UX', 'Print']
-    },
-    {
-      name: 'James Wilson',
-      role: 'Photographer',
-      experience: '10 years',
-      rating: '5.0',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500',
-      portfolio: '30+ Projects',
-      skills: ['Fashion', 'Editorial', 'Portrait']
-    }
+    // {
+    //   name: 'Michael Chen',
+    //   role: 'Videographer',
+    //   experience: '6 years',
+    //   rating: '4.8',
+    //   image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500',
+    //   portfolio: '20+ Projects',
+    //   skills: ['Documentary', 'Commercial', 'Music Videos']
+    // },
+    // {
+    //   name: 'Emma Davis',
+    //   role: 'Graphic Designer',
+    //   experience: '5 years',
+    //   rating: '4.9',
+    //   image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500',
+    //   portfolio: '25+ Projects',
+    //   skills: ['Branding', 'UI/UX', 'Print']
+    // },
+    // {
+    //   name: 'James Wilson',
+    //   role: 'Photographer',
+    //   experience: '10 years',
+    //   rating: '5.0',
+    //   image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500',
+    //   portfolio: '30+ Projects',
+    //   skills: ['Fashion', 'Editorial', 'Portrait']
+    // }
   ];
 
   const containerVariants = {
