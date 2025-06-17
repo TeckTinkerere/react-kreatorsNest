@@ -1,52 +1,11 @@
 import { motion } from 'framer-motion';
 
 const Photography = () => {
-  const photographyResources = [
-    {
-      title: 'Portrait Photography',
-      description: `
-        📚 Learn: YouTube channels like Jessica Kobeissi, SLR Lounge, and Skillshare classes.
-        📸 Tools: Canon M50, Sony a6400, Reflectors, Lightroom presets.
-        🌐 Communities: r/photography, Flickr Groups, Facebook Portrait Shooters SG.
-        🎯 Gigs: Graduation shoots, LinkedIn headshots, Poly CCA portraits.
-        📌 Scenario: A student offers $20 portrait shoots on campus to build a portfolio, edits in Lightroom Mobile, and builds an Instagram proof page.
-      `,
-      price: 'Starter Kits & Pose Guides',
-      image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500'
-    },
-    {
-      title: 'Event Photography',
-      description: `
-        📚 Learn: Mango Street tutorials, CreativeLive workshops.
-        📸 Gear: Zoom lenses (24-70mm), flash diffusers, backup SD cards.
-        🌐 Communities: Event Photographers Asia FB group, Reddit Event Photography.
-        🎯 Gigs: School open houses, music nights, private parties.
-        📌 Scenario: A student joins a polytechnic event team, shoots school gigs for free, then charges for external community events.
-      `,
-      price: 'Event Checklists + Contracts',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500'
-    },
-    {
-      title: 'Commercial Photography',
-      description: `
-        📚 Learn: Fstoppers, Karl Taylor Education.
-        📸 Gear: Lightboxes, tripods, product backdrops, capture tether tools.
-        🌐 Communities: r/ProductPhotography, BrandShooters Telegram SG.
-        🎯 Gigs: Cafe menu shots, Shopee seller images, poly-based biz collabs.
-        📌 Scenario: A freelancer uses home lightbox kits and charges local thrift shops $30 per product set to build skill + side income.
-      `,
-      price: 'Lighting Kits & Gig Sites',
-      image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500'
-    }
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -55,12 +14,90 @@ const Photography = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100
-      }
+      transition: { type: 'spring', stiffness: 100 }
     }
   };
+
+  const photographyResources = [
+    {
+      title: 'Portrait Photography',
+      image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500',
+      categories: {
+        '📚 Learn': [
+          { name: 'Jessica Kobeissi (YouTube)', url: 'https://www.youtube.com/user/jessicakphoto' },
+          { name: 'SLR Lounge', url: 'https://www.slrlounge.com/' },
+          { name: 'Skillshare Portrait Classes', url: 'https://www.skillshare.com/browse/portrait-photography' },
+        ],
+        '📸 Tools': [
+          { name: 'Canon EOS M50', url: 'https://www.usa.canon.com/shop/p/eos-m50-mark-ii' },
+          { name: 'Sony a6400', url: 'https://electronics.sony.com/imaging/interchangeable-lens-cameras/aps-c/p/ilce6400-b' },
+          { name: 'Lightroom Presets (Free/Paid)', url: 'https://www.lightroompresets.com/' },
+        ],
+        '🌐 Communities': [
+          { name: 'r/photography', url: 'https://www.reddit.com/r/photography/' },
+          { name: 'Portrait Shooters SG (FB)', url: 'https://www.facebook.com/groups/portraitshootersingapore/' },
+        ],
+        '🎯 Gigs': [
+          { name: 'Graduation Shoots (SP/NYP)', url: '#' },
+          { name: 'CCA Headshots', url: '#' },
+        ],
+        '📌 Scenario': [
+          { name: 'Campus Portrait Hustle', url: '#' },
+        ]
+      },
+      price: 'Starter Kits & Pose Guides'
+    },
+    {
+      title: 'Event Photography',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500',
+      categories: {
+        '📚 Learn': [
+          { name: 'Mango Street (YT)', url: 'https://www.youtube.com/c/MangoStreet' },
+          { name: 'CreativeLive Events', url: 'https://www.creativelive.com/photography/event' },
+        ],
+        '📸 Tools': [
+          { name: '24-70mm Lenses', url: 'https://www.the-digital-picture.com/Reviews/Canon-EF-24-70mm-f-2.8-L-USM-Lens-Review.aspx' },
+          { name: 'Flash Diffusers', url: 'https://www.bhphotovideo.com/c/buy/Flash-Diffusers/ci/1207/N/4077634454' },
+        ],
+        '🌐 Communities': [
+          { name: 'Event Photogs Asia (FB)', url: 'https://www.facebook.com/groups/eventphotographersasia/' },
+        ],
+        '🎯 Gigs': [
+          { name: 'School Events', url: '#' },
+          { name: 'Private Community Parties', url: '#' },
+        ],
+        '📌 Scenario': [
+          { name: 'Shoot for Free, Build Portfolio', url: '#' },
+        ]
+      },
+      price: 'Event Checklists + Contracts'
+    },
+    {
+      title: 'Commercial Photography',
+      image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500',
+      categories: {
+        '📚 Learn': [
+          { name: 'Fstoppers', url: 'https://fstoppers.com/' },
+          { name: 'Karl Taylor Education', url: 'https://www.karltayloreducation.com/' },
+        ],
+        '📸 Tools': [
+          { name: 'Lightboxes (Amazon)', url: 'https://www.amazon.com/portable-photo-studio-lightbox/s?k=portable+photo+studio+lightbox' },
+          { name: 'Tether Tools', url: 'https://tethertools.com/' },
+        ],
+        '🌐 Communities': [
+          { name: 'r/ProductPhotography', url: 'https://www.reddit.com/r/ProductPhotography/' },
+        ],
+        '🎯 Gigs': [
+          { name: 'Shopee Product Sets', url: '#' },
+          { name: 'Café Menu Shoots', url: '#' },
+        ],
+        '📌 Scenario': [
+          { name: 'Lightbox + Thrift Gig Workflow', url: '#' },
+        ]
+      },
+      price: 'Lighting Kits & Gig Sites'
+    }
+  ];
 
   return (
     <motion.div
@@ -69,15 +106,17 @@ const Photography = () => {
       animate="visible"
       className="p-4 md:p-8 max-w-7xl mx-auto"
     >
+      {/* Title */}
       <motion.div variants={itemVariants} className="text-center mb-12">
         <h1 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Photography Resource Hub
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-          Explore gear, guides, and freelance pathways in modern photography.
+          Explore tools, techniques, and gig paths for freelance photographers.
         </p>
       </motion.div>
 
+      {/* Cards */}
       <motion.div
         variants={containerVariants}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
@@ -86,10 +125,10 @@ const Photography = () => {
           <motion.div
             key={index}
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            whileHover={{ scale: 1.03 }}
+            className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all"
           >
-            <div className="relative h-48 overflow-hidden">
+            <div className="h-48 overflow-hidden relative">
               <motion.img
                 src={resource.image}
                 alt={resource.title}
@@ -99,17 +138,35 @@ const Photography = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-3">{resource.title}</h2>
-              <p className="text-gray-600 mb-4 whitespace-pre-line text-sm">{resource.description.trim()}</p>
-              <div className="flex items-center justify-between">
-                <p className="text-blue-600 font-semibold">{resource.price}</p>
+            <div className="p-5 space-y-4">
+              <h2 className="text-xl font-semibold text-gray-800">{resource.title}</h2>
+              {Object.entries(resource.categories).map(([section, links], idx) => (
+                <div key={idx}>
+                  <h3 className="font-medium text-gray-700">{section}</h3>
+                  <ul className="list-disc list-inside text-sm text-gray-600">
+                    {links.map((item, i) => (
+                      <li key={i}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              <div className="flex justify-between items-center pt-4">
+                <span className="text-sm font-medium text-blue-600">{resource.price}</span>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  View Resources
+                  Start Learning
                 </motion.button>
               </div>
             </div>
@@ -117,18 +174,23 @@ const Photography = () => {
         ))}
       </motion.div>
 
+      {/* CTA */}
       <motion.div
         variants={itemVariants}
-        className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center"
+        className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Shoot, Edit, Earn</h2>
-        <p className="mb-6">Perfect for young freelancers with a camera and ambition. Begin your photography journey here.</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-3">
+          Shoot. Share. Succeed.
+        </h2>
+        <p className="mb-6 text-white/90">
+          Whether you're just starting out or looking to go pro, these tools help you build your brand from scratch.
+        </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
-          Explore All Tools
+          Browse All Freelancer Tools
         </motion.button>
       </motion.div>
     </motion.div>
