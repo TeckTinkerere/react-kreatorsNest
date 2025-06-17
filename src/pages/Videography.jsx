@@ -5,37 +5,37 @@ const Videography = () => {
     {
       title: 'Event Videography',
       description: `
-        🎥 Learn: Full Time Filmmaker, Parker Walbeck, YouTube "Wedding Film School".
-        🧰 Tools: Gimbals (DJI Ronin SC), lapel mics, Sony A7C, ND filters.
-        🎯 Gigs: Poly open house videos, wedding highlights, orientation recaps.
-        🌐 Communities: r/videography, Facebook SG Videographers Club.
-        📌 Scenario: A student uses CapCut Pro + phone gimbal to shoot a friend's proposal, posts it on TikTok, and lands 2 client gigs after going semi-viral.
+📚 Learn: [Full Time Filmmaker](https://fulltimefilmmaker.com), [Parker Walbeck YouTube](https://www.youtube.com/@ParkerWalbeck), [Wedding Film School](https://www.youtube.com/c/WeddingFilmSchool).
+🎥 Tools: DJI Ronin SC, Sony A7C, lapel mics, ND filters.
+🌐 Communities: r/videography, SG Videographers Club on Facebook.
+🎯 Gigs: Poly open houses, proposals, orientation highlights.
+📌 Scenario: Student uses a gimbal and CapCut Pro to film a friend’s proposal. The clip goes semi-viral on TikTok, leading to paid gigs from classmates.
       `,
-      price: 'Free & Paid Resources',
+      price: 'Free & Paid Learning Kits',
       image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500'
     },
     {
       title: 'Commercial Production',
       description: `
-        📚 Learn: Skillshare video branding courses, Justin Odisho, Film Riot.
-        🧰 Tools: Tripods, Zoom audio recorder, 3-point lighting kits, DaVinci Resolve.
-        🎯 Gigs: SME promotional clips, local café menu reels, Shopee product ads.
-        🌐 Platforms: Upwork, Fiverr, and Studiobinder for workflow planning.
-        📌 Scenario: A poly student works with an F&B CCA, creates 1-minute promo videos for free, then sells $200 promo bundles to hawker brands.
+📚 Learn: [Justin Odisho](https://www.youtube.com/user/JustinOdisho), [Film Riot](https://www.youtube.com/user/filmriot), Skillshare promo classes.
+🎥 Tools: Tripod, 3-point lighting kit, Zoom H1 recorder, DaVinci Resolve.
+🌐 Platforms: [Upwork](https://upwork.com), [Fiverr](https://fiverr.com), [StudioBinder](https://www.studiobinder.com).
+🎯 Gigs: Reels for F&B brands, digital menus, startup pitches.
+📌 Scenario: A student works with a food-based CCA, creates a 1-min promo reel, then sells similar clips to hawker stalls at $200/package.
       `,
-      price: 'Templates & Client Brief Kits',
+      price: 'Client Brief & Promo Templates',
       image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500'
     },
     {
       title: 'Music Videos',
       description: `
-        🎬 Learn: Lyrical Lemonade breakdowns, ShotDeck inspiration, BTS on Vimeo.
-        🧰 Tools: Colored LEDs, slow-motion mode, lens filters, editing to beat.
-        🎯 Gigs: Indie band videos, poly music clubs, dance crews, TikTok trends.
-        🌐 Platforms: YouTube Shorts, IG Reels, BandLab cross-collabs.
-        📌 Scenario: A student teams with campus rappers, shoots stylized music reels on weekends, gains exposure on IG Reels, and builds a Spotify visualizer portfolio.
+📚 Learn: [Lyrical Lemonade](https://www.youtube.com/@lyricallemonade), [ShotDeck](https://shotdeck.com), Vimeo BTS.
+🎥 Tools: Colored LED panels, slow-mo features, lens filters.
+🌐 Platforms: YouTube Shorts, IG Reels, BandLab for sound collabs.
+🎯 Gigs: Dance crews, indie bands, school TikTok trends.
+📌 Scenario: Student teams up with music club rappers, shoots reels on weekends, and builds a mini portfolio on Spotify Canvas & Reels.
       `,
-      price: 'Music Video Kits & Creator Tools',
+      price: 'Beat Sync Kits & Lighting Gear',
       image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500'
     }
   ];
@@ -44,9 +44,7 @@ const Videography = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -55,10 +53,7 @@ const Videography = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100
-      }
+      transition: { type: 'spring', stiffness: 100 }
     }
   };
 
@@ -74,7 +69,7 @@ const Videography = () => {
           Videography Resource Hub
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-          Learn to shoot, edit, and freelance — one frame at a time.
+          Craft videos that connect — from school events to viral edits.
         </p>
       </motion.div>
 
@@ -109,7 +104,9 @@ const Videography = () => {
             </div>
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-3">{resource.title}</h2>
-              <p className="text-gray-600 mb-4 whitespace-pre-line text-sm">{resource.description.trim()}</p>
+              <p className="text-gray-600 mb-4 whitespace-pre-line text-sm">
+                {resource.description.trim()}
+              </p>
               <div className="flex items-center justify-between">
                 <p className="text-blue-600 font-semibold">{resource.price}</p>
                 <motion.button
@@ -117,7 +114,7 @@ const Videography = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  View Tools
+                  View Kit
                 </motion.button>
               </div>
             </div>
@@ -129,14 +126,16 @@ const Videography = () => {
         variants={itemVariants}
         className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Create, Share, Collaborate</h2>
-        <p className="mb-6">Start with your phone. Build with your skills. Share with the world.</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Start With What You Have</h2>
+        <p className="mb-6">
+          No fancy gear? No problem. Start with your phone, edit with free tools, and tell your story frame by frame.
+        </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
-          Explore All Video Tools
+          Explore All Video Resources
         </motion.button>
       </motion.div>
     </motion.div>
